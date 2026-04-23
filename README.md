@@ -78,16 +78,16 @@ The app stores data in localStorage keys (example naming):
   - LinkedIn: [Brandon Purcell](https://www.linkedin.com/in/brandon-purcell-89114736a)  
 
 - **Sange Tyhali (Person 3):** View & Edit Issues — view all, view one, edit with save/cancel, navigation back to dashboard  
-  - GitHub: [add link]  
-  - LinkedIn: [add link]  
+  - GitHub: [Jyurgen](https://github.com/Jyurgen)
+  - LinkedIn: [Sange Tyhali](https://www.linkedin.com/in/sange-tyhali-1880b7360/)
 
 - **Jude Bridger (Person 4):** People & Login — people page and login page  
   - GitHub: [add link]  
   - LinkedIn: [add link]  
 
 - **Mugisho Muguruka (Person 5):** Projects & Dashboard — projects page and dashboard page  
-  - GitHub: [add link]  
-  - LinkedIn: [add link]  
+  - GitHub: [bennymuguruka](https://github.com/bennymuguruka)
+  - LinkedIn: [Mugisho Muguruka](https://www.linkedin.com/in/benny-muguruka-a9b722256/)
 ``
 
 ### Example: Issue Object Shape
