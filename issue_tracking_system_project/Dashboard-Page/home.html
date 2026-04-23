@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splatt!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="container">
+    <header id="header">
+        <p id="teamName">Team: Belgium Campus</p>
+        <div id="headerRight">
+            <p>Welcome, Darth Vader</p>
+            <div id="adminImage">
+                <p>DV</p>
+            </div>
+        </div>
+    </header>
+
+    <aside id="sideNav">
+        <div id="logo"></div>
+        <nav id="navigation">
+            <ul>
+                <li id="nav-dashboard" onclick="showSection('dashboard', this)">
+                    <svg class="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                    Dashboard
+                </li>
+                <li id="nav-issues" onclick="showSection('issues', this)">
+                    <svg class="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    View And Edit Issues
+                </li>
+                <li id="nav-projects" onclick="showSection('projects', this)">
+                    <svg class="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                    </svg>
+                    Create Project
+                </li>
+                <li id="nav-people" onclick="showSection('people', this)">
+                    <svg class="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    Create Person
+                </li>
+                <li id="md">
+                    <a href="document.md">View Documentation Markdown</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="themeChangeWrap">
+            <button id="themeChange" onclick="themeChange()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" width="16" height="16">
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+                <span id="themeLabel">Dark Mode</span>
+            </button>
+        </div>
+    </aside>
+
+    <main id="main">
+
+
+        <section id="dashboard" class="section">
+            <div class="section-header">
+                <h2>Dashboard</h2>
+            </div>
+            <div id="dashboard-charts">
+                <section class="chart-card" id="doughnut">
+                    <canvas id="byPriority"></canvas>
+                </section>
+                <section class="chart-card" id="bar1">
+                    <canvas id="byProject"></canvas>
+                </section>
+                <section class="chart-card" id="bar2">
+                    <canvas id="byPerson"></canvas>
+                </section>
+                <section class="chart-card" id="line">
+                    <canvas id="ByMonth"></canvas>
+                </section>
+            </div>
+        </section>
+
+
+        <section id="projects" class="section hidden">
+            <div class="section-header">
+                <h2>Projects</h2>
+            </div>
+            <div class="toolbar">
+                <div class="search-wrap">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" id="projectSearch" placeholder="Search projects..." oninput="renderProjects()">
+                </div>
+                <div class="filter-group">
+                    <select id="projectSort" onchange="renderProjects()">
+                        <option value="">Sort By</option>
+                        <option value="name-asc">Name A–Z</option>
+                        <option value="name-desc">Name Z–A</option>
+                        <option value="issues-desc">Most Issues</option>
+                        <option value="issues-asc">Fewest Issues</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="toggleProjectForm()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    New Project
+                </button>
+            </div>
+
+            <div id="projectFormWrap" class="form-card hidden">
+                <h3 class="form-title">Create Project</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" id="projectName" placeholder="e.g. Website Redesign">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-secondary" onclick="toggleProjectForm()">Cancel</button>
+                    <button class="btn-primary" onclick="saveProject()">Save Project</button>
+                </div>
+            </div>
+
+            <div id="projectList" class="project-grid"></div>
+        </section>
+
+
+        <section id="issues" class="section hidden">
+            <div class="section-header">
+                <h2>Issues</h2>
+            </div>
+            <div class="toolbar">
+                <div class="search-wrap">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" id="issueSearch" placeholder="Search issues..." oninput="displayIssues()">
+                </div>
+                <div class="filter-group">
+                    <select id="issueFilterPriority" onchange="displayIssues()">
+                        <option value="">All Priorities</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <select id="issueFilterProject" onchange="displayIssues()">
+                        <option value="">All Projects</option>
+                    </select>
+                    <select id="issueSort" onchange="displayIssues()">
+                        <option value="">Sort By</option>
+                        <option value="urgency">Most Urgent</option>
+                        <option value="status">Status</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="toggleIssueForm()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Report Issue
+                </button>
+            </div>
+// Find Report Bug Form Here
+            <div id="IssueFormWrap" class="form-card hidden">
+                <h3 class="form-title">Report an Issue</h3>
+                <form id="reportBugForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="issueID">Issue ID</label>
+                            <input type="text" id="issueID" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="assign">Assign Issue To</label>
+                             <select id="assign">
+                                <option value="">-- Select Person --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="grid-column:1/-1">
+                            <label for="summary">Summary</label>
+                            <input type="text" id="summary" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="grid-column:1/-1">
+                            <label for="detailed">Detailed Description</label>
+                            <textarea id="detailed" rows="4" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date Identified</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issueID">Identifier Name</label>
+                            <input type="text" id="who" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project">Project</label>
+                            <select id="project" required>
+                                <option value="">-- Select Project --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="priority">Priority</label>
+                            <select id="priority" required>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="reportBugCloseBtn">Cancel</button>
+                        <input type="submit" value="Submit" class="btn-primary">
+                    </div>
+                </form>
+            </div>
+
+            <div id="issueList" class="project-grid"></div>
+            <div id="editModalOverlay" class="hidden"
+                style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;padding:20px"
+                onclick="if(event.target===this)closeEditModal()">
+                <div
+                    style="background:var(--surface);border:1px solid var(--border);border-radius:12px;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-md)">
+                    <div
+                        style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--border)">
+                        <h3 style="font-size:16px;font-weight:600;color:var(--text)">Edit Issue</h3>
+                        <button onclick="closeEditModal()"
+                            style="background:none;border:none;font-size:22px;color:var(--text-muted);cursor:pointer">&times;</button>
+                    </div>
+                    <div class="modal-body" id="modalBody" style="padding:24px"></div>
+                    <div
+                        style="display:flex;gap:10px;justify-content:flex-end;padding:16px 24px;border-top:1px solid var(--border)">
+                        <button class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+                        <button class="btn-primary" onclick="saveChanges()">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="people" class="section hidden">
+            <div class="section-header">
+                <h2>People</h2>
+            </div>
+            <div class="form-card" style="max-width:520px">
+                <h3 class="form-title">Create Person</h3>
+                <form id="peopleCreation">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="uname">Username</label>
+                            <input type="text" id="uname" placeholder="e.g. jDoe">
+                            <span id="usernameValidation" style="color:transparent;font-size:12px">Username is
+                                required</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="e.g. john@email.com">
+                            <span id="emailValidation" style="color:transparent;font-size:12px">Email is required</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" placeholder="John">
+                            <span id="firstNameValidation" style="color:transparent;font-size:12px">First name is
+                                required</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" placeholder="Doe">
+                            <span id="surnameValidation" style="color:transparent;font-size:12px">Last name is
+                                required</span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:16px">
+                        <label>Profile Picture</label>
+                        <div id="profilePicture"
+                            style="width:90px;height:90px;border-radius:50%;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;background:var(--bg-page)">
+                            <p id="profileText"
+                                style="font-size:11px;color:var(--text-muted);text-align:center;padding:6px">Upload
+                                photo</p>
+                            <img id="picture" alt="profile" src=""
+                                style="display:none;width:100%;height:100%;object-fit:cover">
+                        </div>
+                        <input type="file" id="hiddenFileInput" accept="image/*" style="display:none">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" id="createUser" class="btn-primary">Create Person</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="create-people-handerler.js"></script>
+    <script src="Issues (View, create & edit).js"></script>
+    <script src="projects.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

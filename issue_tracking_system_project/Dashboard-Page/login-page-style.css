@@ -1,0 +1,148 @@
+/* ── Login page – inherits design tokens from style.css ── */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-page);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Three-column centering grid */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 480px 1fr;
+    grid-template-rows: 100vh;
+    grid-template-areas: "leftSide middle rightSide";
+    width: 100%;
+}
+
+.leftSide  { grid-area: leftSide; }
+.rightSide { grid-area: rightSide; }
+
+.middle {
+    grid-area: middle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+/* ── Logo ── */
+#loginLogo {
+    background-image: var(--logo);
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+/* ── Card ── */
+#loginForm {
+    width: 100%;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#loginForm section {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ── Inputs ── */
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    all: unset;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-page);
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.15s;
+}
+
+#loginForm input[type="text"]:focus,
+#loginForm input[type="password"]:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+#loginForm input::placeholder {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* ── Login button ── */
+#button {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 18px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+#button:hover  { background: var(--accent-hover); }
+#button:active { transform: scale(0.98); }
+
+/* ── Error message ── */
+#loginFailMessage {
+    all: unset;
+    display: block;
+    font-size: 13px;
+    color: var(--status-overdue-text);
+    text-align: center;
+    min-height: 18px;
+}
+
+/* ── Dark-mode toggle (matches sidebar button exactly) ── */
+#themeChangeWrap {
+    width: 10%;
+    position: absolute;
+    bottom: 5px;
+    border: none;
+}
+
+#themeChange {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    transition: background 0.15s;
+    box-sizing: border-box;
+}
+
+#themeChange:hover { background: var(--bg-page); }
