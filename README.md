@@ -69,11 +69,25 @@ The app stores data in localStorage keys (example naming):
 ``
 ## 🤝 Contributors (Work Split)
 
-- **Ruan Megit (Person 1):** Data layer — Person/Project/Issue objects, localStorage setup, seed data
-- **Brandon Zander Purcell (Person 2):** Create Issue — form/modal, dropdowns, save new issue to localStorage, return to dashboard
-- **Sange Tyhali (Person 3):** View & Edit Issues — view all, view one, edit with save/cancel, navigation back to dashboard
-- **Jude Bridger (Person 4):** People & Login — people page and login page
-- **Mugisho Muguruka (Person 5):** Projects & Dashboard — projects page and dashboard page
+- **Ruan Megit (Person 1):** Data layer — Person/Project/Issue objects, localStorage setup, seed data  
+  - GitHub: [Ruan3174](https://github.com/Ruan3174)  
+  - LinkedIn: [Ruan Megit](https://www.linkedin.com/in/ruan-megit-385256349)  
+
+- **Brandon Zander Purcell (Person 2):** Create Issue — form/modal, dropdowns, save new issue to localStorage, return to dashboard  
+  - GitHub: [Brandon-cmd548](https://github.com/Brandon-cmd548)  
+  - LinkedIn: [Brandon Purcell](https://www.linkedin.com/in/brandon-purcell-89114736a)  
+
+- **Sange Tyhali (Person 3):** View & Edit Issues — view all, view one, edit with save/cancel, navigation back to dashboard  
+  - GitHub: [add link]  
+  - LinkedIn: [add link]  
+
+- **Jude Bridger (Person 4):** People & Login — people page and login page  
+  - GitHub: [add link]  
+  - LinkedIn: [add link]  
+
+- **Mugisho Muguruka (Person 5):** Projects & Dashboard — projects page and dashboard page  
+  - GitHub: [add link]  
+  - LinkedIn: [add link]  
 ``
 
 ### Example: Issue Object Shape
