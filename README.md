@@ -90,6 +90,9 @@ The app stores data in localStorage keys (example naming):
   - LinkedIn: [Mugisho Muguruka](https://www.linkedin.com/in/benny-muguruka-a9b722256/)
 ``
 
+
+[![Video Demo](https://img.youtube.com/vi/Eggyr08IWLU/0.jpg)](https://www.youtube.com/watch?v=Eggyr08IWLU)
+
 ### Example: Issue Object Shape
 ```js
 {
